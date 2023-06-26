@@ -8,11 +8,10 @@
 // need to be modified.
 // Execute `rustlings hint iterators5` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
 
 use std::collections::HashMap;
 
-#[derive(Clone, Copy, PartialEq, Eq)]
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
 enum Progress {
     None,
     Some,
@@ -32,7 +31,13 @@ fn count_for(map: &HashMap<String, Progress>, value: Progress) -> usize {
 fn count_iterator(map: &HashMap<String, Progress>, value: Progress) -> usize {
     // map is a hashmap with String keys and Progress values.
     // map = { "variables1": Complete, "from_str": None, ... }
-    todo!();
+    map.values()
+        .into_iter()
+        .filter(|progress| {
+            println!("{:#?}", progress);
+            return value == **progress;
+        })
+        .count()
 }
 
 fn count_collection_for(collection: &[HashMap<String, Progress>], value: Progress) -> usize {
@@ -51,7 +56,10 @@ fn count_collection_iterator(collection: &[HashMap<String, Progress>], value: Pr
     // collection is a slice of hashmaps.
     // collection = [{ "variables1": Complete, "from_str": None, ... },
     //     { "variables2": Complete, ... }, ... ]
-    todo!();
+    collection
+        .into_iter()
+        .flat_map(|map| map.values().filter(|progress| progress == &&value))
+        .count()
 }
 
 #[cfg(test)]
@@ -132,6 +140,8 @@ mod tests {
         map.insert(String::from("arc1"), Some);
         map.insert(String::from("as_ref_mut"), None);
         map.insert(String::from("from_str"), None);
+
+        println!("this is in the test");
 
         map
     }
