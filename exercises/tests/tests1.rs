@@ -12,6 +12,6 @@
 mod tests {
     #[test]
     fn you_can_assert() {
-        assert!(false, "some msg");
+        assert!(true, "some msg");
     }
 }
