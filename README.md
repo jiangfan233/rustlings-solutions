@@ -1,4 +1,9 @@
-Not finished!!!
+### My first step on my Rust journey.
+
+Some... most of the answers need to be **optimized**, i think. So, please just take this as advice or simply disregard it as noise.
+
+
+**If there is any infringement, please let me know and I will immediately remove the repository.**
 
 
 <div class="oranda-hide">
